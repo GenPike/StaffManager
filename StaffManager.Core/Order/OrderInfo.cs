@@ -4,5 +4,5 @@ namespace StaffManager.Core.Order;
 
 public sealed class OrderInfo
 {
-    public List<PersonInfo> PeopleOut { get; set; }
+    public List<GroupInfo> PeopleOut { get; set; }
 }

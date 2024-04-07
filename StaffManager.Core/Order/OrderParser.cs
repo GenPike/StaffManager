@@ -3,13 +3,20 @@ using Xceed.Words.NET;
 
 namespace StaffManager.Core.Order;
 
-public static class OrderParser
+public class OrderParser
 {
-    public static OrderInfo Parse(string filePath)
+    private readonly string _filePath;
+
+    public OrderParser(string filePath)
     {
         ArgumentNullException.ThrowIfNull(filePath);
 
-        using var document = DocX.Load(filePath);
+        _filePath = filePath;
+    }
+
+    public OrderInfo Parse()
+    {
+        using var document = DocX.Load(_filePath);
 
         var order = new OrderInfo();
 

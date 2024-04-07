@@ -10,7 +10,9 @@ public sealed class GroupInfo
 
     public string Reason { get; set; }
 
-    public int StartParagraphIndex { get; set; }
+    public List<PersonInfo> People { get; } = new List<PersonInfo>();
 
-    public int EndParagraphIndex { get; set; }
+    internal int StartParagraphIndex { get; set; }
+
+    internal int EndParagraphIndex { get; set; }
 }

@@ -11,24 +11,24 @@ internal static class PeopleOutParser
     private const string ReasonPattern = "Підстава:";
 
     private static readonly Regex _tripleNumerationRegex = new(@"\d+\.\d+\.\d+\.", RegexOptions.Compiled);
+    private static readonly Regex _doubleConsecutiveCapitalLettersRegex = new(@"[А-Я]{2}", RegexOptions.Compiled);
 
-    public static List<PersonInfo> Parse(DocX document)
+    public static List<GroupInfo> Parse(DocX document)
     {
         var peopleOutTextIndex = document.IndexOfFirst(SectionStartPattern);
         if (peopleOutTextIndex == -1)
-            return new List<PersonInfo>();
+            return new List<GroupInfo>();
 
         var peopleOutParagraphIndex = document.IndexOfParagraph(peopleOutTextIndex);
 
         var groups = GetGroups(document, peopleOutParagraphIndex);
+        InitPeople(document, groups);
 
-        return GetPeople(document, groups);
+        return groups;
     }
 
-    private static List<PersonInfo> GetPeople(DocX document, List<GroupInfo> groups)
+    private static void InitPeople(DocX document, List<GroupInfo> groups)
     {
-        var people = new List<PersonInfo>();
-
         foreach (var group in groups)
         {
             var currentParagraphIndex = group.StartParagraphIndex + 2;
@@ -38,17 +38,12 @@ internal static class PeopleOutParser
                 var text = document.Paragraphs[currentParagraphIndex].Text;
 
                 var person = ParsePersonInfo(text);
-
-                person.EnrichWithGroupInfo(group);
-
-                people.Add(person);
+                group.People.Add(person);
 
                 currentParagraphIndex += 3;
 
             } while (currentParagraphIndex < group.EndParagraphIndex);
         }
-
-        return people;
     }
 
     private static List<GroupInfo> GetGroups(DocX document, int startParagraphIndex)
@@ -116,7 +111,7 @@ internal static class PeopleOutParser
         group.ExtendedDestination = text[startIndex..firstCommaIndex].Trim();
 
         var lastWhiteSpaceIndex = group.ExtendedDestination.LastIndexOf(' ');
-        group.Destination = group.ExtendedDestination[lastWhiteSpaceIndex..];
+        group.Destination = group.ExtendedDestination[lastWhiteSpaceIndex..].Trim();
 
         var lastCommaIndex = text.LastIndexOf(',') + 1;
         var colonIndex = text.IndexOf(':');
@@ -135,12 +130,15 @@ internal static class PeopleOutParser
 
         var textWithoutNumeration = _tripleNumerationRegex.Replace(text, string.Empty).Trim();
 
-        var firstWhiteSpaceIndex = textWithoutNumeration.IndexOf(' ');
-        person.Rank = textWithoutNumeration[..firstWhiteSpaceIndex];
+        var match = _doubleConsecutiveCapitalLettersRegex.Match(textWithoutNumeration);
+        var doubleCapitalLettersIndex = match.Index - 1;
+        person.Rank = textWithoutNumeration[..doubleCapitalLettersIndex].Trim();
 
-        var startOfNameIndex = firstWhiteSpaceIndex + 1;
         var firstCommaIndex = textWithoutNumeration.IndexOf(',');
-        person.FullName = textWithoutNumeration[startOfNameIndex..firstCommaIndex].Trim();
+        person.FullName = textWithoutNumeration[doubleCapitalLettersIndex..firstCommaIndex].Trim();
+
+        var firstWhiteSpaceIndex = person.FullName.IndexOf(' ');
+        person.Surname = person.FullName[..firstWhiteSpaceIndex];
 
         var startWorkPlaceIndex = firstCommaIndex + 1;
         var lastCommaIndex = textWithoutNumeration.LastIndexOf(',');
