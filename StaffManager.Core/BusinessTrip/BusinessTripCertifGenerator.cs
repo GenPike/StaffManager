@@ -33,19 +33,30 @@ public sealed class BusinessTripCertifGenerator
     {
         foreach (var group in order.PeopleOut)
         {
+            using var templateDocument = DocX.Load(_templateFilePath);
             using var document = CreateTripFile(group);
 
-            document.ReplaceText(new StringReplaceTextOptions { SearchValue = RankPattern, NewValue = group.People[0].Rank });
-            document.ReplaceText(new StringReplaceTextOptions { SearchValue = FullNamePattern, NewValue = group.People[0].FullName });
-            document.ReplaceText(new StringReplaceTextOptions { SearchValue = WorkPlacePattern, NewValue = group.People[0].WorkPlace });
-            document.ReplaceText(new StringReplaceTextOptions 
-            { 
-                SearchValue = ExtendedDestinationPattern, 
-                NewValue = group.ExtendedDestination 
-            });
-            document.ReplaceText(new StringReplaceTextOptions { SearchValue = PeriodPattern, NewValue = group.Period });
-            document.ReplaceText(new StringReplaceTextOptions { SearchValue = ReasonPattern, NewValue = group.Reason });
-            document.ReplaceText(new StringReplaceTextOptions { SearchValue = DestinationPattern, NewValue = group.Destination });
+            var peopleCounter = 1;
+
+            foreach (var person in group.People)
+            {
+                if (peopleCounter != 1)
+                    document.InsertDocument(templateDocument);
+
+                document.ReplaceText(new StringReplaceTextOptions { SearchValue = RankPattern, NewValue = person.Rank });
+                document.ReplaceText(new StringReplaceTextOptions { SearchValue = FullNamePattern, NewValue = person.FullName });
+                document.ReplaceText(new StringReplaceTextOptions { SearchValue = WorkPlacePattern, NewValue = person.WorkPlace });
+                document.ReplaceText(new StringReplaceTextOptions
+                {
+                    SearchValue = ExtendedDestinationPattern,
+                    NewValue = group.ExtendedDestination
+                });
+                document.ReplaceText(new StringReplaceTextOptions { SearchValue = PeriodPattern, NewValue = group.Period });
+                document.ReplaceText(new StringReplaceTextOptions { SearchValue = ReasonPattern, NewValue = group.Reason });
+                document.ReplaceText(new StringReplaceTextOptions { SearchValue = DestinationPattern, NewValue = group.Destination });
+
+                peopleCounter++;
+            }
 
             document.Save();
         }
