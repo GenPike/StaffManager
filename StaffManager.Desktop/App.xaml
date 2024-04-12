@@ -4,6 +4,26 @@
              xmlns:local="clr-namespace:StaffManager.Desktop"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+
+            <Style x:Key="FilePickerLabel" TargetType="{x:Type Label}">
+                <Setter Property="Margin" Value="0,10,0,0"/>
+            </Style>
+
+            <Style x:Key="FilePickerTextBox" TargetType="{x:Type TextBox}">
+                <Setter Property="Margin" Value="5,0,0,0"/>
+                <Setter Property="IsEnabled" Value="False"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+            </Style>
+
+            <Style x:Key="FilePickerButton" TargetType="{x:Type Button}">
+                <Setter Property="Width" Value="30"/>
+                <Setter Property="Height" Value="25"/>
+                <Setter Property="Margin" Value="10,0,0,0"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="Content" Value="..."/>
+            </Style>
+
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

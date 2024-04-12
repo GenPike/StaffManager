@@ -73,6 +73,9 @@ public sealed class BusinessTripCertifGenerator
 
         var targetFilePath = Path.Combine(_targetFileDirectory, targetFileName);
 
+        if (File.Exists(targetFilePath))
+            File.Delete(targetFilePath);
+
         File.Copy(_templateFilePath, targetFilePath);
 
         return DocX.Load(targetFilePath);

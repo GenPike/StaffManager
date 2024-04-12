@@ -19,76 +19,68 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="3*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <Label
-            Margin="0,10,0,5"
+            Style="{StaticResource FilePickerLabel}"
             Content="Наказ" />
-
         <TextBox
             Grid.Row="1"
             Grid.Column="0"
-            Margin="5,0,0,0"
-            IsEnabled="False"
+            Style="{StaticResource FilePickerTextBox}"
             Text="{Binding OrderFilePath}" />
-
         <Button
             Grid.Row="1"
             Grid.Column="1"
-            Content="..."
-            Margin="10,0,0,0"
-            Width="50"
-            Height="30"
-            HorizontalAlignment="Left"
+            Style="{StaticResource FilePickerButton}"
             Command="{Binding PickOrderFileCommand}" />
 
+        
         <Label
             Grid.Row="2"
-            Margin="0,10,0,5"
+            Style="{StaticResource FilePickerLabel}"
             Content="Шаблон посвідчення" />
-
         <TextBox 
             Grid.Row="3" 
             Grid.Column="0"
-            Margin="5,0,0,0"
-            IsEnabled="False"
+            Style="{StaticResource FilePickerTextBox}"
             Text="{Binding TemplateFilePath}" />
-
         <Button
             Grid.Row="3" 
             Grid.Column="1"
-            Content="..."
-            Margin="10,0,0,0"
-            Width="50"
-            Height="30"
-            HorizontalAlignment="Left"
+            Style="{StaticResource FilePickerButton}"
             Command="{Binding PickTemplateFileCommand}" />
+        
         
         <Label
             Grid.Row="4"
-            Margin="0,10,0,5"
+            Style="{StaticResource FilePickerLabel}"
             Content="Створити в" />
-
         <TextBox 
             Grid.Row="5" 
             Grid.Column="0"
-            Margin="5,0,0,0"
-            IsEnabled="False"
+            Style="{StaticResource FilePickerTextBox}"
             Text="{Binding TargetFolderPath}" />
-
         <Button
             Grid.Row="5" 
             Grid.Column="1"
-            Content="..."
-            Margin="10,0,0,0"
-            Width="50"
-            Height="30"
-            HorizontalAlignment="Left"
+            Style="{StaticResource FilePickerButton}"
             Command="{Binding SelectTargetFolderCommand}" />
 
+        <Button
+            Grid.Row="6" 
+            Grid.Column="1"
+            Margin="20"
+            Padding="5"
+            Content="Обробити"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Right"
+            Command="{Binding ProduceCommand}" />
+        
     </Grid>
 </Window>
