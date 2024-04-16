@@ -6,7 +6,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StaffManager.Desktop", "Sta
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StaffManager.Core", "StaffManager.Core\StaffManager.Core.csproj", "{F0E097CC-BC40-4738-9FA4-01D51800CB20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StaffManager.Console", "StaffManager.Console\StaffManager.Console.csproj", "{1AB216B7-FBDD-48C7-8D42-B6D3FF4D50F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StaffManager.Console", "StaffManager.Console\StaffManager.Console.csproj", "{1AB216B7-FBDD-48C7-8D42-B6D3FF4D50F4}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "StaffManager.Installer", "StaffManager.Installer\StaffManager.Installer.vdproj", "{FB71F3F1-4825-4B5A-8563-C06356180C6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +28,8 @@ Global
 		{1AB216B7-FBDD-48C7-8D42-B6D3FF4D50F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1AB216B7-FBDD-48C7-8D42-B6D3FF4D50F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1AB216B7-FBDD-48C7-8D42-B6D3FF4D50F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB71F3F1-4825-4B5A-8563-C06356180C6E}.Debug|Any CPU.ActiveCfg = Debug
+		{FB71F3F1-4825-4B5A-8563-C06356180C6E}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
