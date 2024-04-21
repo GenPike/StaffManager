@@ -15,7 +15,7 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_1271A3AD89C240D2A90EC13C4B4DB676"
+        "MsmKey" = "8:_522AA978CBC74F2DA9CEF2A040464BFC"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -181,9 +181,9 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:StaffManager.Installer"
+        "ProductName" = "8:Staff Manager"
         "ProductCode" = "8:{CC903389-ACC4-4FC8-AAF1-ECD809D686EE}"
-        "PackageCode" = "8:{5F947A6E-5B48-4513-AE7B-C9E91BA7374C}"
+        "PackageCode" = "8:{BE0460C7-0022-401C-B530-E470AE27D4E3}"
         "UpgradeCode" = "8:{A11FAF3D-AD6D-4674-94E5-25B5C9A554C2}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -191,12 +191,12 @@
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:BL"
+        "Manufacturer" = "8:Finpike Ltd."
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:StaffManager.Installer"
+        "Title" = "8:Staff Manager"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:BL"
+        "ARPCONTACT" = "8:Finpike Ltd."
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
@@ -303,6 +303,20 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_BB9B845A766B4684BB105D81C3B6F605"
+            {
+            "Name" = "8:Staff Manager"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_522AA978CBC74F2DA9CEF2A040464BFC"
+            "Folder" = "8:_09FB5BB5A8464FA493C5E9C112360804"
+            "WorkingFolder" = "8:_AC6CE6C1B9FF46699AE89F61B94B143B"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {
@@ -702,9 +716,9 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_1271A3AD89C240D2A90EC13C4B4DB676"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_522AA978CBC74F2DA9CEF2A040464BFC"
             {
-            "SourcePath" = "8:..\\StaffManager.Desktop\\obj\\Debug\\net8.0-windows\\StaffManager.Desktop.dll"
+            "SourcePath" = "8:..\\StaffManager.Desktop\\obj\\Release\\net8.0-windows\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_AC6CE6C1B9FF46699AE89F61B94B143B"
@@ -723,7 +737,7 @@
             "IsolateTo" = "8:"
             "ProjectOutputGroupRegister" = "3:1"
             "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
+            "OutputGroupCanonicalName" = "8:PublishItems"
             "OutputProjectGuid" = "8:{AA238BEC-D296-4D2E-BA99-E7A022F6E279}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
